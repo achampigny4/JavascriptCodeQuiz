@@ -1,12 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./assets/style.css" rel="stylesheet">
     <title>Javascript Code Quiz</title>
 </head>
+
 <body>
-    <header></header>
-    <script></script>
+    <div class="container">
+        <h1>Javascript Code Quiz</h1>
+        <div id="question-container" class="hide">
+            <h4 id="question">Quiz Question</h4>
+            <div id="answer-buttons" class="btn-grid">
+                <button class="btn">A</button>
+                <button class="btn">B</button>
+                <button class="btn">C</button>
+                <button class="btn">D</button>
+            </div>
+
+            <div class="controls">
+                <button id="start-btn" class="start-btn btn">Start</button>
+            </div>
+        </div>
+    </div>
+    <script src="./assets/script.js"></script>
 </body>
+
 </html>
