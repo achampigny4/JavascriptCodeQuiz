@@ -1,4 +1,10 @@
-$(document).ready(function () {
+// $(document).ready(function () {
+    let jsQuestion = document.getElementById("#question");
+    let jsAnswers = document.getElementById("#answerButtons");
+    let startQuiz = document.getElementById("#startBtn");
+    let countDown = document.getElementById("#timer");
+    let userScore = document.getElementById("#score");
+    let scoresList = document.getElementById("#HighScores");
 
 // quiz questions and choices
 // assign choices to buttons A-D
@@ -13,4 +19,9 @@ $(document).ready(function () {
 // promt to add user initials
 // score and user initials gets saved to local storage
 // a link to another page to show top 5 scores
-}
+
+
+
+
+
+// }
