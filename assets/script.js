@@ -7,14 +7,10 @@ $(document).ready(function () {
 // "quiz question" get replaced with the actual question once start button clicked
 // buttons A-D get replaced by answers when start button is clicked
 // function that switches to the next question after anwer is selected
-// timer that starts when start button is clicked
-// start button dispears after onClick event???
-// timer counts down
+// timer counts down when start button is clicked
 // time gets removed from timer when answer is wrong
-// timer gets to zero score is shown below timer
+// timer gets to the final zero score is shown in your score
 // promt to add user initials
 // score and user initials gets saved to local storage
-// a link to another page to show top 5 scores below game score
-
-
+// a link to another page to show top 5 scores
 }
