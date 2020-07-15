@@ -23,4 +23,7 @@ View my project here:
 https://achampigny4.github.io/JavascriptCodeQuiz/
 <br>
 Referenced sites:
+<br>
 https://codepen.io/WebDevSimplified/pen/xNvaaz
+https://www.w3schools.com/howto/howto_js_countdown.asp
+https://stackoverflow.com/questions/1191865/code-for-a-simple-javascript-countdown-timer
