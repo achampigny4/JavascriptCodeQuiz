@@ -27,3 +27,4 @@ Referenced sites:
 https://codepen.io/WebDevSimplified/pen/xNvaaz
 https://www.w3schools.com/howto/howto_js_countdown.asp
 https://stackoverflow.com/questions/1191865/code-for-a-simple-javascript-countdown-timer
+https://www.codeexplained.org/2018/10/create-multiple-choice-quiz-using-javascript.html
