@@ -35,7 +35,7 @@ h1 {
     margin: 20px 0;
   }
 
-  .btn {
+  .btnA, .btnB, .btnC, .btnD {
     border: 1px solid rgb(255, 177, 149);
     background-color: rgb(250, 232, 226);
     border-radius: 5px;
@@ -44,7 +44,7 @@ h1 {
     outline: none;
   }
 
-  .btn:hover {
+  .btnA:hover, .btnB:hover, .btnC:hover, .btnD:hover {
     background-color: rgb(255, 177, 149);
   }
 
