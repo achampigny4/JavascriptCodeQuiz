@@ -54,7 +54,7 @@ let quiz = [{
 {
     'question': 'question4 text here',
     'options': [
-        'question4 answer A',
+        'question3 answer A',
         'question4 answer B',
         'question4 answer C',
         'question4 answer D',
@@ -71,12 +71,13 @@ let currentQuestion = 0;
 
 function loadQuestion() {
     let q = quiz[currentQuestion];
-    question.innerHTML = "<h4>" + q.quiz + "<h4>";
-    choiceA.innerHTML = q.choiceA;
-    choiceB.innerHTML = q.choiceB;
-    choiceC.innerHTML = q.choiceC;
-    choiceD.innerHTML = q.choiceD;
-
+    // console.log(q);
+    question.innerHTML = "<h4>" + q.question + "<h4>";
+    choiceA.innerHTML = q.options[0];
+    choiceB.innerHTML = q.options[1];
+    choiceC.innerHTML = q.options[2];
+    choiceD.innerHTML = q.options[3];
+    // console.log(q.options);
     // loop through questions and answers
     // for (var i = 0; i < question[this.currentQuestion].answers.length; i++); {
         //         questionContainer.append('<h4 id="question"' + q[this.currentQuestion].answers[i]
