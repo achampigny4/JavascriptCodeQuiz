@@ -54,7 +54,7 @@ $(document).ready(function () {
     {
         'question': 'question4 text here',
         'options': [
-            'question3 answer A',
+            'question4 answer A',
             'question4 answer B',
             'question4 answer C',
             'question4 answer D',
@@ -81,52 +81,55 @@ $(document).ready(function () {
         choiceD.innerHTML = q.options[3];
         // console.log(q.options);
         // loop through questions and answers
-};
+    };
 
-// next question and options from quiz
-function nextQuestion() {
-    // checks to see if there is a next q and a in the quiz
-    if (currentQuestion < quiz.length - 1) {
-        // increment the question index
-        currentQuestion++;
-        // displays the new question and answers
+    // next question and options from quiz
+    function nextQuestion() {
+        // checks to see if there is a next q and a in the quiz
+        if (currentQuestion < quiz.length - 1) {
+            // increment the question index
+            currentQuestion++;
+            // displays the new question and answers
+        }
         loadQuestion();
     }
-}
 
-//answersButton clicked nextQuestion displays
-//set value of nextquestion
-
-// buttons A-D get replaced by answers when start button is clicked
-// function that switches to the next question after anwer is selected
-// not rewquired but would be nice high score page arranges scores descending from top score(sort functions for arrays)
-
-//set score of the countDown time
-
-// 60 second timer counts down when start button is clicked
-$("#startBtn").click(function () {
-    // "quiz question" gets replaced with the actual question once start button clicked
-    loadQuestion();
-    let count = 60;
-    let counter = setInterval(timer, 1000);
-    function timer() {
-        count = count - 1;
-        if (count <= 0) {
-            clearInterval(counter);
-            // when timer ends user is prompted to enter initials
-            // prompt("Times up! Enter your initials:" + "");
-            // prompt closes user initials get stored in localStorage
-            // score shows and is sent to local storage with initials
+    //answersButton clicked nextQuestion and answer options display
+    $("#answerButtons").click(function () {
+        let answerSelected = event.target;
+        if (answerSelected.matches("#answersButtons")) {
         }
+        nextQuestion();
+    });
 
-        document.getElementById("timer").innerHTML = count + " seconds";
-    };
-});
 
-// time gets removed from timer when answer is wrong
+    // not required high score page arranges scores descending from top score(sort functions for arrays)
+    //set score of the countDown time
 
-// a link to another page to show top 5 scores
-// score and user initials displayed on highscore page
+    // 60 second timer counts down when start button is clicked
+    $("#startBtn").click(function () {
+        // "quiz question" gets replaced with the actual question once start button clicked
+        loadQuestion();
+        let count = 60;
+        let counter = setInterval(timer, 1000);
+        function timer() {
+            count = count - 1;
+            if (count <= 0) {
+                clearInterval(counter);
+                // when timer ends user is prompted to enter initials
+                // prompt("Times up! Enter your initials:" + "");
+                // prompt closes user initials get stored in localStorage
+                // score shows and is sent to local storage with initials
+            }
+
+            document.getElementById("timer").innerHTML = count + " seconds";
+        };
+    });
+
+    // time gets removed from timer when answer is wrong
+
+    // a link to another page to show top 5 scores
+    // score and user initials displayed on highscore page
 
 
 });
