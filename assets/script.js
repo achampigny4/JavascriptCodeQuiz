@@ -1,4 +1,4 @@
-// $(document).ready(function () {
+$(document).ready(function () {
 // HTML elements
 let jsQuestion = document.getElementById("#question");
 let jsAnswers = document.getElementById("#answerButtons");
@@ -138,4 +138,4 @@ $("#startBtn").click(function () {
 // score and user initials displayed on highscore page
 
 
-// };
+});
