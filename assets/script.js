@@ -66,11 +66,16 @@ $(document).ready(function () {
         // end of Qs and As
     ];
 
-    // global vars
+    //global variables
+
+    //set interval
     let counter;
-    let count = 60; //needed for accessing timer to subtract time for wrong answers and is the score
-    let lastQuestion = quiz.length - 1; //use to end quiz
-    let currentQuestion = 0; //use to determine right or wrong?
+    //countDown time
+    let count = 60; //access timer to subtract time for wrong answers and is the score
+    //end quiz when last question answered
+    let lastQuestion = quiz.length - 1;
+    //determine right or wrong?
+    let currentQuestion = 0;
     // submt=true, //?
     // picked; //?
 
@@ -81,14 +86,12 @@ $(document).ready(function () {
             document.getElementById("timer").innerHTML = count + " seconds";
             if (count <= 0) {
                 clearInterval(counter);
-                // when timer ends switch to just page with user is prompted to enter initials
-                // prompt("Times up! Enter your initials:" + "");
-                // user initials get stored in localStorage
-                // score shows and is sent to local storage with initials
             }
         }, 1000);
 
     };
+
+    //global functions
 
     //displays quiz questions and answer options
     function loadQuestion() {
@@ -116,29 +119,11 @@ $(document).ready(function () {
         };
     };
 
-    //answersButton clicked nextQuestion and answer options display
-    $("#answerButtons").click(function (event) {
-        let answerSelected = event.target;
-        // console.log(answerSelected);
-        // console.log(quiz[currentQuestion]);
-        if (quiz[currentQuestion]['options'][event] == quiz[currentQuestion]['correctAnswer']) {
-            //add time to timer
-            count += 10;
-        } else {
-            //remove time from timer
-            count -= 10;
-        };
-        // if (answerSelected.matches("#answersButtons")) {
-        //     'question4 answer C'
-        // }
-        //stop timer when last question answered.
-        if (currentQuestion == 3) {
-            endQuiz();
-        } else {
-            nextQuestion();
-        }
-        // userAnswer();
-    });
+    function endQuiz() {
+        clearInterval(counter);
+    };
+
+    //click events
 
     //start button click event
     $("#startBtn").click(function () {
@@ -148,12 +133,36 @@ $(document).ready(function () {
         startCountDown();
     });
 
+    //answersButton clicked nextQuestion and answer options display
+    $("#answerButtons").click(function (event) {
+        let answerSelected = event.target;
+        // console.log(quiz[currentQuestion]);
+        if (quiz[currentQuestion]['options'][event] == quiz[currentQuestion]['correctAnswer']) {
+            //correct add time to timer
+            count += 10;
+        } else {
+            //wrong remove time from timer
+            count -= 10;
+        };
+        //stop timer when last question answered.
+        if (currentQuestion == 3) {
+            endQuiz();
+        } else {
+            nextQuestion();
+        }
+        // userAnswer();
+    });
+
+    // when timer ends switch to just page with user is prompted to enter initials
+    // prompt("Times up! Enter your initials:" + "");
+    // user initials get stored in localStorage
+    // score shows and is sent to local storage with initials
+
     // not required high score page arranges scores descending from top score(sort functions for arrays)
     //set score of the countDown time
     // a link to another page to show top 5 scores
     // score and user initials displayed on highscore page
-    function endQuiz(timer) {
-        clearInterval(timer);
-    };
+
+    //local storage section
 
 });
