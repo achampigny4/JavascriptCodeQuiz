@@ -67,12 +67,30 @@ $(document).ready(function () {
     ];
 
     // global vars
+    let counter;
     let count = 60; //needed for accessing timer to subtract time for wrong answers and is the score
     let lastQuestion = quiz.length - 1; //use to end quiz
     let currentQuestion = 0; //use to determine right or wrong?
     // submt=true, //?
     // picked; //?
 
+    // 60 second count down timer moved outside of on click event to get the time to store time in local storage for score
+    function startCountDown() {
+        counter = setInterval(function () {
+            count--;
+            document.getElementById("timer").innerHTML = count + " seconds";
+            if (count <= 0) {
+                clearInterval(counter);
+                // when timer ends switch to just page with user is prompted to enter initials
+                // prompt("Times up! Enter your initials:" + "");
+                // user initials get stored in localStorage
+                // score shows and is sent to local storage with initials
+            }
+        }, 1000);
+
+    };
+
+    //displays quiz questions and answer options
     function loadQuestion() {
         let q = quiz[currentQuestion];
         // console.log(q);
@@ -81,8 +99,6 @@ $(document).ready(function () {
         choiceB.innerHTML = q.options[1];
         choiceC.innerHTML = q.options[2];
         choiceD.innerHTML = q.options[3];
-        // console.log(q.options);
-        // loop through questions and answers
     };
 
     // next question and options from quiz
@@ -91,10 +107,13 @@ $(document).ready(function () {
         if (currentQuestion < quiz.length - 1) {
             // increment the question index
             currentQuestion++;
+            loadQuestion();
             // displays the new question and answers
         }
-        
-        loadQuestion();
+        if (currentQuestion >= quiz.length) {
+            clearTimeout(count);
+            endQuiz();
+        };
     };
 
     //answersButton clicked nextQuestion and answer options display
@@ -102,46 +121,39 @@ $(document).ready(function () {
         let answerSelected = event.target;
         // console.log(answerSelected);
         // console.log(quiz[currentQuestion]);
-        if(quiz[currentQuestion]['options'][event] == quiz[currentQuestion]['correctAnswer']){
+        if (quiz[currentQuestion]['options'][event] == quiz[currentQuestion]['correctAnswer']) {
             //add time to timer
             count += 10;
         } else {
             //remove time from timer
             count -= 10;
-                    };
+        };
         // if (answerSelected.matches("#answersButtons")) {
         //     'question4 answer C'
         // }
-        nextQuestion();
+        //stop timer when last question answered.
+        if (currentQuestion == 3) {
+            endQuiz();
+        } else {
+            nextQuestion();
+        }
         // userAnswer();
     });
 
-//stop timer when last question answered.
-
-    // not required high score page arranges scores descending from top score(sort functions for arrays)
-    //set score of the countDown time
-
-    // 60 second timer counts down when start button is clicked
+    //start button click event
     $("#startBtn").click(function () {
         // "quiz question" gets replaced with the actual question once start button clicked
         loadQuestion();
-        let count = 60;
-        let counter = setInterval(timer, 1000);
-        function timer() {
-            count = count - 1;
-            if (count <= 0) {
-                clearInterval(counter);
-                // when timer ends user is prompted to enter initials
-                // prompt("Times up! Enter your initials:" + "");
-                // prompt closes user initials get stored in localStorage
-                // score shows and is sent to local storage with initials
-            }
-
-            document.getElementById("timer").innerHTML = count + " seconds";
-        };
+        //timer begin count down when start button clicked
+        startCountDown();
     });
+
+    // not required high score page arranges scores descending from top score(sort functions for arrays)
+    //set score of the countDown time
     // a link to another page to show top 5 scores
     // score and user initials displayed on highscore page
-
+    function endQuiz(timer) {
+        clearInterval(timer);
+    };
 
 });
