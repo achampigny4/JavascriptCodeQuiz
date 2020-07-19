@@ -17,7 +17,7 @@ View my project here:
 <br>
 https://achampigny4.github.io/JavascriptCodeQuiz/
 <br><br>
-<img src="../JavascriptCodeQuiz/assets/screenShot.png" style="width: 300px" alt="quiz home page">
+<img src="assets/screenShot.png" style="width: 300px" alt="quiz home page">
 <br><br>
 Referenced sites:
 <br>
