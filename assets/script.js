@@ -1,15 +1,19 @@
 $(document).ready(function () {
     // HTML elements
+
+    //quiz
     let jsQuestion = document.getElementById("#question");
-    let jsAnswers = document.getElementById("#answerButtons");
     let choiceA = document.querySelector(".btnA");
     let choiceB = document.querySelector(".btnB");
     let choiceC = document.querySelector(".btnC");
     let choiceD = document.querySelector(".btnD");
-    let startQuiz = document.getElementById("#startBtn");
     let countDown = document.getElementById("#timer");
-    let userScore = document.getElementById("#score");
-    let scoresList = document.getElementById("#HighScores");
+    let lastScore = document.getElementById("#score");//display last score
+    let scoresList = document.getElementById("#HighScores");//creat button to score page
+    //scores page
+    let userScore = document.getElementById("#yourScore");
+    let userInitialsEl = document.getElementById("#initials");
+    let submitUser = document.getElementById("#submitBtn");
 
     // quiz questions and choices
     // assign choices to buttons A-D
@@ -79,6 +83,12 @@ $(document).ready(function () {
     // submt=true, //?
     // picked; //?
 
+
+    //global functions
+
+    // hide score page
+    $('#scorePage').css('display', 'none');
+
     // 60 second count down timer moved outside of on click event to get the time to store time in local storage for score
     function startCountDown() {
         counter = setInterval(function () {
@@ -90,8 +100,6 @@ $(document).ready(function () {
         }, 1000);
 
     };
-
-    //global functions
 
     //displays quiz questions and answer options
     function loadQuestion() {
@@ -119,8 +127,16 @@ $(document).ready(function () {
         };
     };
 
+    //stops timer
     function endQuiz() {
+        //stops timer
         clearInterval(counter);
+        // // shows score page
+        $('#scorePage').css('display', 'block');
+        // hides the questions, options, start button, timer your score and high scores button
+        $('#questionContainer').css('display', 'none');
+        $('.info').css('display', 'none');
+
     };
 
     //click events
@@ -132,7 +148,7 @@ $(document).ready(function () {
         //timer begin count down when start button clicked
         startCountDown();
     });
-
+    /////////////  need to determine if user answered right or wrong   //////////////////////////////
     //answersButton clicked nextQuestion and answer options display
     $("#answerButtons").click(function (event) {
         let answerSelected = event.target;
@@ -152,16 +168,19 @@ $(document).ready(function () {
         }
         // userAnswer();
     });
+    //////////////////////////////////////////////////////////////////////////////////////////////////
 
     // when timer ends switch to just page with user is prompted to enter initials
+    //hide quiz container and shower local storage?
     // prompt("Times up! Enter your initials:" + "");
     // user initials get stored in localStorage
     // score shows and is sent to local storage with initials
-
-    // not required high score page arranges scores descending from top score(sort functions for arrays)
     //set score of the countDown time
     // a link to another page to show top 5 scores
     // score and user initials displayed on highscore page
+    // not required high score page arranges scores descending from top score(sort functions for arrays)
+
+
 
     //local storage section
 
