@@ -23,7 +23,7 @@ $(document).ready(function () {
             'question1 answer C',
             'question1 answer D',
         ],
-        'correctAnswer': 'B',
+        'correctAnswer': 'question1 answer B',
         'correctResponse': 'Correct',
         'incorrectResponse': 'wrong'
     },
@@ -35,7 +35,7 @@ $(document).ready(function () {
             'question2 answer C',
             'question2 answer D',
         ],
-        'correctAnswer': 'A',
+        'correctAnswer': 'question2 answer A',
         'correctResponse': 'Correct',
         'incorrectResponse': 'wrong'
     },
@@ -47,7 +47,7 @@ $(document).ready(function () {
             'question3 answer C',
             'question3 answer D',
         ],
-        'correctAnswer': 'D',
+        'correctAnswer': 'question3 answer D',
         'correctResponse': 'Correct',
         'incorrectResponse': 'wrong'
     },
@@ -59,7 +59,7 @@ $(document).ready(function () {
             'question4 answer C',
             'question4 answer D',
         ],
-        'correctAnswer': 'answer C',
+        'correctAnswer': 'question4 answer C',
         'correctResponse': 'Correct',
         'incorrectResponse': 'wrong'
     }
@@ -67,9 +67,11 @@ $(document).ready(function () {
     ];
 
     // global vars
-    // let time? = 60; //needed for accessing timer to subtract time for wrong answers and is the score
-    let lastQuestion = quiz.length - 1;
-    let currentQuestion = 0;
+    let count = 60; //needed for accessing timer to subtract time for wrong answers and is the score
+    let lastQuestion = quiz.length - 1; //use to end quiz
+    let currentQuestion = 0; //use to determine right or wrong?
+    // submt=true, //?
+    // picked; //?
 
     function loadQuestion() {
         let q = quiz[currentQuestion];
@@ -91,17 +93,30 @@ $(document).ready(function () {
             currentQuestion++;
             // displays the new question and answers
         }
+        
         loadQuestion();
-    }
+    };
 
     //answersButton clicked nextQuestion and answer options display
-    $("#answerButtons").click(function () {
+    $("#answerButtons").click(function (event) {
         let answerSelected = event.target;
-        if (answerSelected.matches("#answersButtons")) {
-        }
+        // console.log(answerSelected);
+        // console.log(quiz[currentQuestion]);
+        if(quiz[currentQuestion]['options'][event] == quiz[currentQuestion]['correctAnswer']){
+            //add time to timer
+            count += 10;
+        } else {
+            //remove time from timer
+            count -= 10;
+                    };
+        // if (answerSelected.matches("#answersButtons")) {
+        //     'question4 answer C'
+        // }
         nextQuestion();
+        // userAnswer();
     });
 
+//stop timer when last question answered.
 
     // not required high score page arranges scores descending from top score(sort functions for arrays)
     //set score of the countDown time
@@ -125,9 +140,6 @@ $(document).ready(function () {
             document.getElementById("timer").innerHTML = count + " seconds";
         };
     });
-
-    // time gets removed from timer when answer is wrong
-
     // a link to another page to show top 5 scores
     // score and user initials displayed on highscore page
 
