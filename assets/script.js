@@ -2,7 +2,7 @@ $(document).ready(function () {
     // HTML elements
 
     //quiz
-    let jsQuestion = document.getElementById("#question");
+    let question = document.querySelector("#question");
     let choiceA = document.querySelector(".btnA");
     let choiceB = document.querySelector(".btnB");
     let choiceC = document.querySelector(".btnC");
@@ -15,55 +15,54 @@ $(document).ready(function () {
     let userInitialsEl = document.getElementById("#initials");
     let submitUser = document.getElementById("#submitBtn");
 
-    // quiz questions and choices
-    // assign choices to buttons A-D
+    // quiz questions and choices from https://www.w3schools.com/quiztest/quiztest.asp?qtest=JS
     // assign correct to correct answers
     // assign wrong to inccorect answers
     let quiz = [{
-        'question': 'question1 text here',
+        'question': 'What is the correct syntax for referring to an external script called "xxx.js"?',
         'options': [
-            'question1 answer A',
-            'question1 answer B',
-            'question1 answer C',
-            'question1 answer D',
+            '<script src="xxx.js">',
+            '<script name="xxx.js">',
+            '<script href="xxx.js">',
+            '<script alt="xxx.js',
         ],
-        'correctAnswer': 'question1 answer B',
+        'correctAnswer': '<script src="xxx.js">',
         'correctResponse': 'Correct',
         'incorrectResponse': 'wrong'
     },
     {
-        'question': 'question2 text here',
+        'question': 'How do you write "Hello World" in an alert box?',
         'options': [
-            'question2 answer A',
-            'question2 answer B',
-            'question2 answer C',
-            'question2 answer D',
+            'msg("Hello World");',
+            'alertBox("Hello World");',
+            'msgBox("Hello World");',
+            'alert("Hello World"); ',
         ],
-        'correctAnswer': 'question2 answer A',
+        'correctAnswer': 'alert("Hello World"); ',
         'correctResponse': 'Correct',
         'incorrectResponse': 'wrong'
     },
     {
-        'question': 'question3 text here',
+        'question': 'How to write an IF statement in JavaScript?',
         'options': [
-            'question3 answer A',
-            'question3 answer B',
-            'question3 answer C',
-            'question3 answer D',
+            'if i = 5 then',
+            'if (i == 5)  ',
+            'if i = 5',
+            'if i == 5 then',
         ],
-        'correctAnswer': 'question3 answer D',
+        'correctAnswer': 'if (i == 5)  ',
         'correctResponse': 'Correct',
         'incorrectResponse': 'wrong'
     },
     {
-        'question': 'question4 text here',
+        'question': 'How to write an IF statement for executing some code if "i" is NOT equal to 5?',
         'options': [
-            'question4 answer A',
-            'question4 answer B',
-            'question4 answer C',
-            'question4 answer D',
+            'if (i <> 5)',
+            'if i =! 5 then',
+            'if (i != 5) ',
+            'if i <> 5',
         ],
-        'correctAnswer': 'question4 answer C',
+        'correctAnswer': 'if (i != 5) ',
         'correctResponse': 'Correct',
         'incorrectResponse': 'wrong'
     }
@@ -104,12 +103,11 @@ $(document).ready(function () {
     //displays quiz questions and answer options
     function loadQuestion() {
         let q = quiz[currentQuestion];
-        // console.log(q);
-        question.innerHTML = "<h4>" + q.question + "<h4>";
-        choiceA.innerHTML = q.options[0];
-        choiceB.innerHTML = q.options[1];
-        choiceC.innerHTML = q.options[2];
-        choiceD.innerHTML = q.options[3];
+        question.textContent = q.question;
+        choiceA.textContent = q.options[0];
+        choiceB.textContent = q.options[1];
+        choiceC.textContent = q.options[2];
+        choiceD.textContent = q.options[3];
     };
 
     // next question and options from quiz
