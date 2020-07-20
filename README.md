@@ -22,6 +22,7 @@ https://achampigny4.github.io/JavascriptCodeQuiz/
 Referenced sites:
 <br>
 https://www.techiedelight.com/hide-div-container-javascript/
+https://www.w3schools.com/quiztest/quiztest.asp?qtest=JS
 https://codepen.io/WebDevSimplified/pen/xNvaaz
 https://www.w3schools.com/howto/howto_js_countdown.asp
 https://stackoverflow.com/questions/1191865/code-for-a-simple-javascript-countdown-timer
