@@ -12,13 +12,13 @@ $(document).ready(function () {
     let scoresList = document.getElementById("#HighScores");//creat button to score page
     //scores page
     let userScore = document.getElementById("#yourScore");
-    let userInitialsEl = document.getElementById("#initials");
+    let initialsInput = document.getElementById("#initials");
     let submitUser = document.getElementById("#submitBtn");
 
     // quiz questions and choices from https://www.w3schools.com/quiztest/quiztest.asp?qtest=JS
     // assign correct to correct answers
     // assign wrong to inccorect answers
-    let quiz = [{
+    const quiz = [{
         'question': 'What is the correct syntax for referring to an external script called "xxx.js"?',
         'options': [
             '<script src="xxx.js">',
@@ -74,7 +74,7 @@ $(document).ready(function () {
     //set interval
     let counter;
     //countDown time
-    let count = 5; //access timer to subtract time for wrong answers and is the score
+    let count = 60; //access timer to subtract time for wrong answers and is the score
     //end quiz when last question answered
     let lastQuestion = quiz.length - 1;
     //determine right or wrong?
@@ -151,7 +151,6 @@ $(document).ready(function () {
     //answersButton clicked nextQuestion and answer options display
     $("#answerButtons").click(function (event) {
         let answerSelected = event.target;
-        console.log(quiz[currentQuestion]);
         if (quiz[currentQuestion]['options'][event] == quiz[currentQuestion]['correctAnswer']) {
             //correct add time to timer
             count += 10;
@@ -167,20 +166,8 @@ $(document).ready(function () {
         }
         // userAnswer();
     });
-    //////////////////////////////////////////////////////////////////////////////////////////////////
-
-    // when timer ends switch to just page with user is prompted to enter initials
-    //hide quiz container and shower local storage?
-    // prompt("Times up! Enter your initials:" + "");
-    // user initials get stored in localStorage
-    // score shows and is sent to local storage with initials
-    //set score of the countDown time
-    // a link to another page to show top 5 scores
-    // score and user initials displayed on highscore page
-    // not required high score page arranges scores descending from top score(sort functions for arrays)
-
-
 
     //local storage section
+    //////////////////////////////////////////////////////////////////////////////////////////////////
 
 });
