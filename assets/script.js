@@ -74,7 +74,7 @@ $(document).ready(function () {
     //set interval
     let counter;
     //countDown time
-    let count = 60; //access timer to subtract time for wrong answers and is the score
+    let count = 5; //access timer to subtract time for wrong answers and is the score
     //end quiz when last question answered
     let lastQuestion = quiz.length - 1;
     //determine right or wrong?
@@ -93,8 +93,9 @@ $(document).ready(function () {
         counter = setInterval(function () {
             count--;
             document.getElementById("timer").innerHTML = count + " seconds";
-            if (count <= 0) {
+            if (count == 0) {
                 clearInterval(counter);
+                endQuiz();
             }
         }, 1000);
 
@@ -150,7 +151,7 @@ $(document).ready(function () {
     //answersButton clicked nextQuestion and answer options display
     $("#answerButtons").click(function (event) {
         let answerSelected = event.target;
-        // console.log(quiz[currentQuestion]);
+        console.log(quiz[currentQuestion]);
         if (quiz[currentQuestion]['options'][event] == quiz[currentQuestion]['correctAnswer']) {
             //correct add time to timer
             count += 10;
